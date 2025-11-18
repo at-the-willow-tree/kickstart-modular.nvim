@@ -1,3 +1,4 @@
+vim.keymap.set('n', 'Q', ':w|BufferClose<cr>', { silent = true, desc = 'Save and close buffer' })
 vim.keymap.set('n', '<leader>bd', ':BufferClose<cr>', { silent = true, desc = 'Close buffer' })
 vim.keymap.set('n', '<leader>br', ':BufferRestore<cr>', { silent = true, desc = 'Restore buffer' })
 vim.keymap.set('n', '<leader>bp', ':BufferPin<cr>', { silent = true, desc = 'Pin buffer' })

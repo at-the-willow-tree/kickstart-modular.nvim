@@ -90,11 +90,11 @@ return {
           -- Jump to the definition of the word under your cursor.
           --  This is where a variable was first declared, or where a function is defined, etc.
           --  To jump back, press <C-t>.
-          map('<leader>gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+          map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
 
           -- WARN: This is not Goto Definition, this is Goto Declaration.
           --  For example, in C this would take you to the header.
-          map('<leader>gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+          map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
           -- Fuzzy find all the symbols in your current document.
           --  Symbols are things like variables, functions, types, etc.
@@ -128,6 +128,7 @@ return {
           --
           -- When you move your cursor, the highlights will be cleared (the second autocommand).
           local client = vim.lsp.get_client_by_id(event.data.client_id)
+
           if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf) then
             local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
             vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
@@ -160,6 +161,14 @@ return {
               vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
             end, '[T]oggle Inlay [H]ints')
           end
+
+          local filetype = vim.bo[event.buf].filetype
+
+          if client and client.name == 'vtsls' and (filetype == 'typescript') then
+            if vim.lsp.get_clients { bufnr = event.buf, name = 'angularls' } then
+              client.server_capabilities.renameProvider = false
+            end
+          end
         end,
       })
 
@@ -168,7 +177,7 @@ return {
       vim.diagnostic.config {
         severity_sort = true,
         float = { border = 'rounded', source = 'if_many' },
-        underline = { severity = vim.diagnostic.severity.ERROR },
+        underline = { severity = { vim.diagnostic.severity.ERROR, vim.diagnostic.severity.WARN } },
         signs = vim.g.have_nerd_font and {
           text = {
             [vim.diagnostic.severity.ERROR] = '󰅚 ',
@@ -178,6 +187,7 @@ return {
           },
         } or {},
         virtual_text = {
+          current_line = true,
           source = 'if_many',
           spacing = 2,
           format = function(diagnostic)
@@ -223,9 +233,8 @@ return {
           },
         },
 
-        ts_ls = {},
+        vtsls = {},
         cssls = {},
-        html = {},
         angularls = {},
       }
 

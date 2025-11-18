@@ -11,6 +11,8 @@ vim.g.have_nerd_font = true
 
 vim.opt.termguicolors = true
 vim.opt.showmode = false
+vim.opt.laststatus = 0
+vim.opt.guifont = 'Iosevka Nerd Font'
 
 -- [[ Setting options ]]
 require 'options'

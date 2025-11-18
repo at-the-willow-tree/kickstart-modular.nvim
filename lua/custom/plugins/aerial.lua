@@ -9,6 +9,8 @@ return {
         max_width = { 40, 0.2 },
         min_width = 10,
       },
+      default_direction = 'prefer_right',
+      resize_to_content = true,
     },
   },
 }

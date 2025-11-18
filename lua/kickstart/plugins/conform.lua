@@ -1,3 +1,14 @@
+vim.api.nvim_create_user_command('FormatToggle', function()
+  vim.g.disable_autoformat = not vim.g.disable_autoformat
+  if vim.g.disable_autoformat then
+    vim.notify 'Autoformat-on-save disabled'
+  else
+    vim.notify 'Autoformat-on-save enabled'
+  end
+end, { desc = 'Toggle autoformat on save' })
+
+vim.keymap.set('n', '<leader>uf', ':FormatToggle<cr>', { silent = true, desc = 'Toggle autoformat on save' })
+
 return {
   { -- Autoformat
     'stevearc/conform.nvim',
@@ -10,12 +21,15 @@ return {
           require('conform').format { async = true, lsp_format = 'fallback' }
         end,
         mode = '',
-        desc = '[F]ormat buffer',
+        desc = '[F]ormat buffer/selection',
       },
     },
     opts = {
       notify_on_error = false,
       format_on_save = function(bufnr)
+        if vim.g.disable_autoformat then
+          return
+        end
         -- Disable "format_on_save lsp_fallback" for languages that don't
         -- have a well standardized coding style. You can add additional
         -- languages here or re-enable it for the disabled ones.
@@ -35,11 +49,13 @@ return {
         -- python = { "isort", "black" },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
-        javascript = { 'prettierd', 'prettier', stop_after_first = true },
-        typescript = { 'prettierd', 'prettier', stop_after_first = true },
-        css = { 'prettierd', 'prettier', stop_after_first = true },
-        html = { 'eslint' },
-        json = { 'prettierd' },
+        javascript = { 'prettierd', 'eslint_d' },
+        typescript = { 'eslint_d', 'eslint', 'prettierd' },
+        css = { 'prettierd', 'prettier' },
+        scss = { 'prettierd', 'prettier' },
+        html = { 'prettierd', 'prettier' },
+        htmlangular = { 'prettierd' },
+        json = { 'prettierd', 'prettier', 'eslint_d' },
       },
     },
   },

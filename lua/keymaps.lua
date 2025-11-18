@@ -8,6 +8,7 @@ vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left wind
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+vim.keymap.set('n', '<leader>uw', ':set wrap!<CR>', { desc = 'Toggle line wrap', silent = true })
 
 -- Highlight when yanking (copying) text
 vim.api.nvim_create_autocmd('TextYankPost', {
@@ -28,5 +29,18 @@ vim.api.nvim_create_autocmd('InsertLeave', {
   pattern = '*',
   command = 'set number relativenumber',
 })
+
+local opts = { noremap = true, silent = true }
+
+local function quickfix()
+  vim.lsp.buf.code_action {
+    filter = function(a)
+      return a.isPreferred
+    end,
+    apply = true,
+  }
+end
+
+vim.keymap.set('n', '<leader>qf', quickfix, opts)
 
 -- vim: ts=2 sts=2 sw=2 et

@@ -41,7 +41,7 @@ require('lazy').setup({
 
   require 'kickstart.plugins.treesitter',
 
-  require 'kickstart.plugins.neo-tree',
+  -- require 'kickstart.plugins.neo-tree',
 
   require 'kickstart.plugins.zenbones',
 

@@ -8,10 +8,44 @@ return {
     dependencies = 'rktjmp/lush.nvim',
     priority = 1000, -- Make sure to load this before all the other start plugins.
     config = function()
-      vim.g.zenbones_transparent_background = true
-      vim.g.kanagawabones_transparent_background = true
-      vim.g.kanagawabones_darken_cursor_line = 2
-      vim.g.kanagawabones_lighten_cursor_line = 2
+      vim.g.zenbones = {
+        darken_cursor_line = 2,
+        lighten_cursor_line = 2,
+      }
+      vim.g.kanagawabones = {
+        transparent_background = true,
+        darken_cursor_line = 2,
+        lighten_cursor_line = 2,
+      }
+      vim.g.zenwritten = {
+        transparent_background = true,
+        darken_cursor_line = 2,
+        lighten_cursor_line = 2,
+      }
+      vim.g.rosebones = {
+        transparent_background = true,
+        darken_cursor_line = 1,
+        lighten_cursor_line = 1,
+      }
+      vim.g.seoulbones = {
+        transparent_background = true,
+        darken_cursor_line = 2,
+        lighten_cursor_line = 2,
+      }
+      vim.g.vimbones = {
+        darken_cursor_line = 2,
+        lighten_cursor_line = 2,
+      }
+      vim.g.forestbones = {
+        transparent_background = true,
+        darken_cursor_line = 2,
+        lighten_cursor_line = 2,
+      }
+      vim.g.duckbones = {
+        transparent_background = true,
+        darken_cursor_line = 2,
+        lighten_cursor_line = 2,
+      }
 
       vim.cmd.colorscheme 'kanagawabones'
     end,
