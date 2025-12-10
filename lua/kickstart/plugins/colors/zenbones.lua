@@ -46,8 +46,6 @@ return {
         darken_cursor_line = 2,
         lighten_cursor_line = 2,
       }
-
-      vim.cmd.colorscheme 'kanagawabones'
     end,
   },
 }
