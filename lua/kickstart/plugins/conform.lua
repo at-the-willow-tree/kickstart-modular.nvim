@@ -25,7 +25,8 @@ return {
       },
     },
     opts = {
-      notify_on_error = false,
+      notify_on_error = true,
+      log_level = vim.log.levels.DEBUG,
       format_on_save = function(bufnr)
         if vim.g.disable_autoformat then
           return
@@ -49,13 +50,14 @@ return {
         -- python = { "isort", "black" },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
-        javascript = { 'prettierd', 'eslint_d' },
-        typescript = { 'eslint_d', 'eslint', 'prettierd' },
+        javascript = { 'prettierd' },
+        -- typescript = { 'prettierd', 'eslint_d' },
+        typescript = { 'prettierd' },
         css = { 'prettierd', 'prettier' },
         scss = { 'prettierd', 'prettier' },
         html = { 'prettierd', 'prettier' },
         htmlangular = { 'prettierd' },
-        json = { 'prettierd', 'prettier', 'eslint_d' },
+        json = { 'prettierd', 'prettier' },
       },
     },
   },

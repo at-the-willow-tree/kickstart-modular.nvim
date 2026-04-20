@@ -13,6 +13,8 @@ vim.api.nvim_create_autocmd('ColorScheme', {
     vim.cmd 'hi BufferDefaultCurrentCHANGED guibg=none'
     vim.cmd 'hi BufferDefaultCurrentDELETED guibg=none'
     vim.cmd 'hi BufferDefaultCurrentERROR guibg=none'
+    vim.cmd 'hi BufferDefaultCurrentHINT guibg=none'
+    vim.cmd 'hi BufferDefaultCurrentWARN guibg=none'
     vim.cmd 'hi BufferDefaultInactive guibg=none guifg=#5a525b'
     vim.cmd 'hi BufferDefaultInactiveTarget guibg=none guifg=#d6c1c5'
     vim.cmd 'hi BufferDefaultInactiveSign guibg=none guifg=none'
@@ -21,6 +23,8 @@ vim.api.nvim_create_autocmd('ColorScheme', {
     vim.cmd 'hi BufferDefaultInactiveCHANGED guibg=none'
     vim.cmd 'hi BufferDefaultInactiveDELETED guibg=none'
     vim.cmd 'hi BufferDefaultInactiveERROR guibg=none'
+    vim.cmd 'hi BufferDefaultInactiveHINT guibg=none'
+    vim.cmd 'hi BufferDefaultInactiveWARN guibg=none'
     vim.cmd 'hi BufferDefaultVisible guibg=none'
     vim.cmd 'hi BufferDefaultVisibleTarget guibg=none guifg=#d6c1c5'
     vim.cmd 'hi BufferDefaultVisibleMod guibg=none'
@@ -28,6 +32,8 @@ vim.api.nvim_create_autocmd('ColorScheme', {
     vim.cmd 'hi BufferDefaultVisibleCHANGED guibg=none'
     vim.cmd 'hi BufferDefaultVisibleDELETED guibg=none'
     vim.cmd 'hi BufferDefaultVisibleERROR guibg=none'
+    vim.cmd 'hi BufferDefaultVisibleHINT guibg=none'
+    vim.cmd 'hi BufferDefaultVisibleWARN guibg=none'
   end),
   group = vim.api.nvim_create_augroup('Sakura Barbar', {}),
 })
@@ -36,7 +42,7 @@ return {
   'anAcc22/sakura.nvim',
   dependencies = 'rktjmp/lush.nvim',
   config = function()
-    vim.opt.background = 'dark' -- or "light"
-    vim.cmd 'colorscheme sakura' -- sets the colorscheme
+    -- vim.opt.background = 'dark' -- or "light"
+    -- vim.cmd 'colorscheme sakura' -- sets the colorscheme
   end,
 }

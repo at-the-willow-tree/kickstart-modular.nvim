@@ -1,3 +1,5 @@
+vim.env.ESLINT_D_PPID = vim.fn.getpid()
+
 return {
 
   { -- Linting

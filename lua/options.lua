@@ -68,7 +68,8 @@ vim.opt.wrap = false
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 vim.opt.expandtab = true
-vim.opt.smartindent = true
+vim.opt.smartindent = false
+vim.opt.autoindent = true
 
 -- Preview substitutions live, as you type!
 vim.o.inccommand = 'split'
@@ -77,13 +78,13 @@ vim.o.inccommand = 'split'
 vim.o.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
-vim.o.scrolloff = 5
+vim.o.scrolloff = 1
 
 -- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
 -- instead raise a dialog asking if you wish to save the current file(s)
 -- See `:help 'confirm'`
 vim.o.confirm = true
 
-vim.opt.winborder = 'single'
+vim.opt.winborder = 'rounded'
 
 -- vim: ts=2 sts=2 sw=2 et

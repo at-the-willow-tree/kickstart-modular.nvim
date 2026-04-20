@@ -15,7 +15,7 @@ return {
       },
       hide_cursor = true,
       stop_eof = true,
-      duration_multiplier = 0.35,
+      duration_multiplier = 0.15,
     },
   },
 }
